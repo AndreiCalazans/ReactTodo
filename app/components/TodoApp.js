@@ -3,6 +3,7 @@ import uuid from 'uuid';
 import TodoList from 'TodoList';
 import TodoAdder from 'TodoAdder'
 import TodoSearch from 'TodoSearch';
+import TodoAPI from 'TodoAPI';
 
 
 var TodoApp = React.createClass({
@@ -10,29 +11,11 @@ var TodoApp = React.createClass({
     return {
       showCompleted: false,
       searchText: '',
-      todos: [
-        {
-          id:uuid(),
-          text: 'walk the dog',
-          completed: false
-        },
-        {
-          id:uuid(),
-          text: 'finish app',
-          completed: true
-        },
-        {
-          id:uuid(),
-          text: 'learn',
-          completed: false
-        },
-        {
-          id:uuid(),
-          text: 'Go to school',
-          completed: true
-        }
-      ]
+      todos: TodoAPI.getTodos()
     };
+  },
+  componentDidUpdate: function() {
+    TodoAPI.setTodos(this.state.todos);
   },
   handleToggle: function (id) {
     var updatedTodos = this.state.todos.map( (todo) => {
