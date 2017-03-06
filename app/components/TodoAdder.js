@@ -1,12 +1,17 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {addTodo} from 'actions';
 
-var TodoAdder = React.createClass({
+
+export var TodoAdder = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
+    var {dispatch} = this.props;
   var todoText = this.refs.todoText.value;
+
   if( todoText.length > 0){
-    this.props.onAddTodo(todoText);
     this.refs.todoText.value = "";
+    dispatch(addTodo(todoText));
   } else {
     this.refs.todoText.focus();  //puts the courser back in the input area
   };
@@ -24,4 +29,4 @@ var TodoAdder = React.createClass({
   }
 });
 
-module.exports = TodoAdder;
+export default connect()(TodoAdder);

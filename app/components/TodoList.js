@@ -1,6 +1,7 @@
 import React from 'react';
 import Todo from 'Todo';
-var TodoList = React.createClass({
+import {connect} from 'react-redux';
+export var TodoList = React.createClass({
   render: function() {
     var {todos} = this.props;
     var renderTodos = () => {
@@ -11,7 +12,7 @@ var TodoList = React.createClass({
       }
       return todos.map( (todo) => {
         return (
-          <Todo key={todo.id} {...todo} onToggle={this.props.onToggle}></Todo>
+          <Todo key={todo.id} {...todo} ></Todo>
         )
       });
     };
@@ -23,4 +24,10 @@ var TodoList = React.createClass({
   }
 });
 
-module.exports = TodoList;
+export default connect(
+  (state) => {
+    return {
+      todos: state.todos
+    }
+  }
+)(TodoList); // this connect gives access to the state in the redux store;
