@@ -14,15 +14,21 @@ var actions = require('actions');
 // above
 // import actions from 'actions'  this doesnt work in es6
 var store = require('configureStore').configure();
+import TodoAPI from 'TodoAPI';
 
 store.subscribe( () => {
-  console.log('New state', store.getState());
+  var state = store.getState();
+
+  console.log('New state', state);
+
+  TodoAPI.setTodos(state.todos);
 });
 
-// 
-// store.dispatch(actions.addTodo('finish tuto'));
-// store.dispatch(actions.setSearchText('tuto'));
-// store.dispatch(actions.toggleShowCompleted());
+// seed the todos
+var initialTodos = TodoAPI.getTodos();
+store.dispatch(actions.addTodos(initialTodos));
+
+
 
 //Load foundations-sites o
 // require("foundation-sites/dist/css/foundation.min.css");
