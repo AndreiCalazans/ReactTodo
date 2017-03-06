@@ -19,10 +19,10 @@ store.subscribe( () => {
   console.log('New state', store.getState());
 });
 
-
-store.dispatch(actions.addTodo('finish tuto'));
-store.dispatch(actions.setSearchText('tuto'));
-store.dispatch(actions.toggleShowCompleted());
+// 
+// store.dispatch(actions.addTodo('finish tuto'));
+// store.dispatch(actions.setSearchText('tuto'));
+// store.dispatch(actions.toggleShowCompleted());
 
 //Load foundations-sites o
 // require("foundation-sites/dist/css/foundation.min.css");
