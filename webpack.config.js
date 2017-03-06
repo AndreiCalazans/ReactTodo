@@ -33,7 +33,8 @@ module.exports = {
     path.resolve('./app/api/'),
     path.resolve('./app/styles/'),
     path.resolve('./app/actions/'),
-    path.resolve('./app/reducers/')
+    path.resolve('./app/reducers/'),
+    path.resolve('./app/store/')
     ],
     extensions: [" " ,".js", "jsx"]
   },
