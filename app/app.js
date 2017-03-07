@@ -18,17 +18,7 @@ import TodoAPI from 'TodoAPI';
 
 
 
-store.subscribe( () => {
-  var state = store.getState();
-
-  console.log('New state', state);
-
-  TodoAPI.setTodos(state.todos);
-});
-
-// seed the todos
-var initialTodos = TodoAPI.getTodos();
-store.dispatch(actions.addTodos(initialTodos));
+store.dispatch(actions.startAddTodos());
 
 
 
