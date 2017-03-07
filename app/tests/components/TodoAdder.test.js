@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import expect from 'expect';
 import $ from 'jquery';
 import TestUtils from 'react-addons-test-utils';
-
+import * as actions from 'actions';
 import {TodoAdder} from 'TodoAdder';
 
 describe('TodoAdder', () => {
@@ -13,10 +13,7 @@ describe('TodoAdder', () => {
 
   it('should dispatch ADD_TODO when valid todo text', () => {
     var todoText = 'watch tv';
-    var action = {
-      type: 'ADD_TODO',
-      text: todoText
-    };
+    var action = actions.startAddTodo(todoText);
     var spy = expect.createSpy();
     var todoAdder = TestUtils.renderIntoDocument(<TodoAdder dispatch={spy}></TodoAdder>);
     var $el = $(ReactDOM.findDOMNode(todoAdder));

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addTodo} from 'actions';
+import {startAddTodo} from 'actions';
 
 
 export var TodoAdder = React.createClass({
@@ -11,7 +11,7 @@ export var TodoAdder = React.createClass({
 
   if( todoText.length > 0){
     this.refs.todoText.value = "";
-    dispatch(addTodo(todoText));
+    dispatch(startAddTodo(todoText));
   } else {
     this.refs.todoText.focus();  //puts the courser back in the input area
   };

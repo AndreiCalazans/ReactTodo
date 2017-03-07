@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+process.noDeprecation = true;
 
 module.exports = {
   entry: [
@@ -34,7 +35,8 @@ module.exports = {
     path.resolve('./app/styles/'),
     path.resolve('./app/actions/'),
     path.resolve('./app/reducers/'),
-    path.resolve('./app/store/')
+    path.resolve('./app/store/'),
+    path.resolve('./app/')
     ],
     extensions: [" " ,".js", "jsx"]
   },
