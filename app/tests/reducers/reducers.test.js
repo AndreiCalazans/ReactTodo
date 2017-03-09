@@ -28,10 +28,14 @@ describe('Reducers', () => {
     });
 
     it('should Unset the user id(uid)', () => {
+      const authData = {
+        uid: '123'
+      };
       var action = {
         type: 'LOGOUT'
       };
-      var res = reducers.authReducer(df({}), df(action));
+      var res = reducers.authReducer(df({authData}), df(action));
+
       expect(res).toEqual({});
     });
   });
