@@ -1,22 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {Route, Router, IndexRoute, hashHistory} from 'react-router';
+import {hashHistory} from 'react-router';
 
 // components
-import TodoApp from 'TodoApp';
-import Login from 'Login';
+import router from 'router/index';
 //redux
 // import {addTodo , setSearchText, toggleShowCompleted} from 'actions';
 var actions = require('actions');
+import firebase from 'firebase/index';
+
+
 
 // var actions = require('actions'); if you want to dispatch using actions.actionGenerator use this else use the import
 // above
 // import actions from 'actions'  this doesnt work in es6
 var store = require('configureStore').configure();
-import TodoAPI from 'TodoAPI';
 
 
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    hashHistory.push('/todos');
+  } else {
+    hashHistory.push('/');
+  }
+});
 
 store.dispatch(actions.startAddTodos());
 
@@ -30,14 +38,11 @@ $(document).foundation();
 require('app.scss');
 
 
+
+
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route path='/' >
-      <IndexRoute component={Login}></IndexRoute>
-      <Route path='/todos' component={TodoApp}></Route>
-      </Route>
-    </Router>
+    {router}
   </Provider>,
   document.getElementById('app')
 );
