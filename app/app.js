@@ -5,7 +5,7 @@ import {Route, Router, IndexRoute, hashHistory} from 'react-router';
 
 // components
 import TodoApp from 'TodoApp';
-
+import Login from 'Login';
 //redux
 // import {addTodo , setSearchText, toggleShowCompleted} from 'actions';
 var actions = require('actions');
@@ -32,7 +32,12 @@ require('app.scss');
 
 ReactDOM.render(
   <Provider store={store}>
-    <TodoApp></TodoApp>
+    <Router history={hashHistory}>
+      <Route path='/' >
+      <IndexRoute component={Login}></IndexRoute>
+      <Route path='/todos' component={TodoApp}></Route>
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('app')
 );
