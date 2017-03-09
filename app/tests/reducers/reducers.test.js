@@ -17,6 +17,24 @@ describe('Reducers', () => {
     });
 
   });
+  describe('authReducer', () => {
+    it('should set the user id(uid)', () => {
+      var action = {
+        type: 'LOGIN',
+        uid: '123'
+      };
+      var res = reducers.authReducer(df({}), df(action));
+      expect(res.uid).toEqual(action.uid);
+    });
+
+    it('should Unset the user id(uid)', () => {
+      var action = {
+        type: 'LOGOUT'
+      };
+      var res = reducers.authReducer(df({}), df(action));
+      expect(res).toEqual({});
+    });
+  });
 
   describe('showCompletedReducer', () => {
     ///Test that the showCommpleted status gets flipped

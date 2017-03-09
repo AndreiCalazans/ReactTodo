@@ -20,8 +20,10 @@ var store = require('configureStore').configure();
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    store.dispatch(actions.login(user.uid));
     hashHistory.push('/todos');
   } else {
+    store.dispatch(actions.logOut());
     hashHistory.push('/');
   }
 });

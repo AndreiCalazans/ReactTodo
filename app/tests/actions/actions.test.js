@@ -36,7 +36,7 @@ describe('Actions', () => {
     expect(res).toEqual(action);
   });
 // this is a test for the asychronous database
-  it('should creeate todo and dispatch ADD_TODO', (done) => {
+  it('should create todo and dispatch ADD_TODO', (done) => {
     const store = createMockStore({});
     const todoText = 'My todo item';
 
@@ -52,6 +52,22 @@ describe('Actions', () => {
     }).catch(done);
 
 
+  });
+  it('should generate login action', () => {
+    var action = {
+      type: 'LOGIN',
+      uid: '123'
+    };
+    var res = actions.login('123');
+    expect(res).toEqual(action);
+  });
+
+  it('should generate logout action', () => {
+    var action = {
+      type: 'LOGOUT'
+    };
+    var res = actions.logOut();
+    expect(res).toEqual(action);
   });
 
   it('should generate add todos action object', () => {
@@ -154,4 +170,6 @@ describe('Actions', () => {
       }, done);
     })
   });
+
+
 });
